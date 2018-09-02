@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
   s.vendored_frameworks = 'Unbxd/Unbxd.framework'
 
   s.dependency "Alamofire"
-  s.dependency "CocoaLumberjack"
+  s.dependency "CocoaLumberjack/Swift"
 
   s.swift_version = "4.1"
 
