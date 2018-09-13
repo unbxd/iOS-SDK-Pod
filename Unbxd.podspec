@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "Unbxd"
-  s.version      = "1.0.4"
+  s.version      = "1.0.5"
   s.summary      = "iOS framework which provides APIs to query Unbxd platform."
   
   s.homepage     = "http://unbxd.com"
@@ -26,9 +26,9 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "9.0"
 
 
-  s.source       = { :git => "https://github.com/unbxd/ios-sdk.git", :branch => "ios-sdk.v2" }
+  s.source       = { :git => "https://github.com/unbxd/Unbxd_iOS_Framework.git", :tag => "#{s.version}" }
 
-  s.vendored_frameworks = 'Unbxd/Unbxd.framework'
+  s.vendored_frameworks = 'Unbxd.framework'
 
   s.dependency "Alamofire"
   s.dependency "CocoaLumberjack/Swift"
