@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "Unbxd"
-  s.version      = "1.0.5"
+  s.version      = "1.0.6"
   s.summary      = "iOS framework which provides APIs to query Unbxd platform."
   
   s.homepage     = "http://unbxd.com"
@@ -33,6 +33,6 @@ Pod::Spec.new do |s|
   s.dependency "Alamofire"
   s.dependency "CocoaLumberjack/Swift"
 
-  s.swift_version = "4.1"
+  s.swift_version = "4.0"
 
 end
