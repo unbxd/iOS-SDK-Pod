@@ -1,34 +1,302 @@
-# iOS-SDK-Pod
+Introduction
+==============
 
-This repository host Unbxd iOS framework and Podspec to distribute via Cocoapods. Podspec consists of details such as path to framework file, version, external dependencies, deployment target, swift version.
+This document will show you how to configure settings on your Google Analytics dashboard to see how Unbxd performs in your website.
+Unbxd functions out the box in your website, only few Unbxd features require minor changes in settings on your Google Analytics dashboard.
 
-This repository is private hence requires permission to access or update.
 
-**Pushing update**
+Setting Search Tracking
+======================
 
-**Step 1:** Clone this repository to local folder. Folder should have Unbxd.podspec and Framework folder which includes Unbxd.framework.
+Pre-requisites
+***************
 
-**Step 2 :** First the version number which is going to be pushed is decided. 
+Before we dive into the configuration changes, ensure that:
 
-Considering current version of framework released is 1.0.7, now the next version would be 1.0.8.
+  1. You are registered with Unbxd Search or Recommendations.
+  2. You have a Google Analytics account with your sites (Property) already added and configured on the dashboard.
+  3. Ensure that both Event and Search tracking are enabled on your Google Analytics dashboard.
 
-Update the podspec file with version 1.0.8.
 
-​				Pod::Spec.new do |s|
+Site Search 
+***********
 
-  				s.name         = "Unbxd"
-  				s.version      = **"1.0.8"**
+Unbxd offers product discovery via API implementation or Hosted Search for its customers.
 
-**Step 3 :** Replace the existing Unbxd.framework with latest in the local folder.
+Every user event in your ecommerce store will result in a change in the URL. Google Analytics tracks user events on your site by identifying each event with its corresponding URL. In order to ensure that Unbxd's Search performance is correctly tracked by Google Analytics, below are the settings you need to configure:
 
-**Step 4 :** Push both updated podspec and .framework to remote by tagging version.
+  1. **Referral Exclusion**
+  2. **Query Parameter Addition**
 
-​			git add .
 
-​			git commit -m "*commit message*"
+Referral Exclusion
+^^^^^^^^^^^^^^^^^^
 
-​			git tag 1.0.8
+**For Hosted Search** 
 
-​			git push origin --tags
+For Hosted search, every search will redirect your visitors to a search result page hosted by Unbxd servers. In order for Google Analytics to analyze events and track traffic on the Unbxd hosted page distinctly, you would have to exclude this domain from your referral list of domains.
 
-​			pod repo push Unbxd Unbxd.podspec
+Follow the below steps to exclude referral domains:
+
+ 1. On your Google Analytics dashboard, navigate to **Admin** (Master Account).
+
+    .. image:: ./_static/images/b.01ss.png
+
+
+ 2. On the **PROPERTY** column section, select the site property (Tracking Id) from the drop-down options on which you want      Google to track referred Unbxd domains distinctly.
+
+    .. image:: ./_static/images/b.02.2ss.png
+
+
+ 3. Click to expand **Tracking Info** in the **PROPERTY** column section, and select **Referral Exclusion List** from the options.
+
+    .. image:: ./_static/images/b.04.png
+
+ 4. Click **+ADD REFERRAL EXCLUSION** to add Unbxd hosted domain (e.g.: search.mywebsite.com)
+
+    .. image:: ./_static/images/b.05.png
+
+ 5. Click **Create**.
+
+    .. image:: ./_static/images/b.06.png
+
+You have successfully created a domain to be excluded as a referral.
+
+
+**For Search API Implementation**
+
+For the customers who use API implementation of Unbxd Search, you need not change this settings on your Google Analytics dashboard.
+
+
+Query Parameter Addition
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+**For Hosted Search** 
+
+Google Analytics identifies search terms based on the query parameter that is passed to the URL once a search is made by a visitor. This query parameter needs to be defined in your Google Analytics dashboard.
+
+For example, consider a page with this URL, *http://search.mylens.com/?q=lens*, Google Analytics will not track the search term “lens” if ‘q’ has not been defined as a query parameter in your Google Analytics dashboard. Unbxd uses * *q* * as a default query parameter in the URL.
+
+If the query parameter for your default search was different from “q”, you can add “q’ as a comma-separated value in the list of query parameter as shown in the snapshot below.
+
+Follow the below steps to configure query parameter:
+
+ 1. On your Google Analytics dashboard, navigate to **Admin** (Master Account).  
+
+ 2. On the **VIEW** column section, select the **All Web Site Data** from the drop-down options.
+
+    .. image:: ./_static/images/b.08.png
+
+ 3. Select **View Settings**.
+
+    .. image:: ./_static/images/b.07.png
+
+ 4. Turn on the **Site search Tracking**.
+
+ 5. In the Query Parameter field, add the text that designates internal query parameters (including Unbxd query parameters) separated by commas. For example, "term, search, query".
+
+    .. image:: ./_static/images/b.09.png
+
+ 6. **Save** the settings.
+
+**Note**: You must also add your default query parameter as a comma-separated value as shown above if you have not already             done so.
+
+**For Search API Implementation**
+
+For the customers who use Search API implementation, you need not change this settings on your Google Analytics dashboard. However, if the default query parameter used in your ecommmerce store is different, you should add the query parameter as shown above.  
+
+
+Testing Search Terms
+=====================
+
+After you have configured the above setting for the property hosted by Unbxd, you can view the reports generated by Google for that property from the **Reporting** section on the dashboard.
+
+The only way to test Search terms is to wait until Google Analytics reporting is refreshed.
+
+Follow the below steps to view the reports generated by Google:
+
+Search Terms
+**************
+
+ 1. On the Google Analytics dashboard, navigate to **Reporting** section.
+
+    .. image:: ./_static/images/b.010.png
+
+ 2. On the left Navigation pane, navigate to **Behavior -> Site Search -> Search Terms.
+
+    .. image:: ./_static/images/b.012.png
+
+ 3. On the right, on the **Explorer** section, select the type of data you wish to view.
+
+    .. image:: ./_static/images/b.013copy.png
+
+**Note**: You can also change the type of data you wish to view by toggling the options in the Explorer section.
+
+4. You would see a table where each Search Term and its related data are displayed.
+
+    .. image:: ./_static/images/b.014ss.png
+
+
+Usage Reports
+***************
+
+ 1. On the left Navigation pane, navigate to Behavior  Site Search  Usage.
+
+    .. image:: ./_static/images/b.015.png
+
+ 2. On the right, on the Explorer section, select the type of data you wish to view.
+
+    .. image:: ./_static/images/b.016copy.png
+
+**Note**: You can also change the type of data you wish to view by toggling the options in the Explorer section.
+
+ 3. You would see a table where each Site Search Status and its related data are displayed.
+
+    .. image:: ./_static/images/b.017ss.png
+
+Once you have configured these setting on your Google Analytics dashboard, you are good to go!
+
+
+Event Tracking
+==============
+Event Tracking is used to record visitor interaction with website elements, such as a widgets, flash-driven menu system etc.
+
+With Google Analytics, you can also track visitor events on the Unbxd Autocomplete feature and Recommendation widgets integrated on your store. Tracking these events are important to assess Unbxd's performance on your store. You can allow Google Analytics to identify events by passing them with their attributes in a specific format given below:       
+
+
+Syntax
+^^^^^^
+
+.. code-block:: guess
+
+   <unbxdattr = "XYZ " onClick=”_gaq.push([‘_trackEvent’, 
+   ‘<category>’, ‘<action>’,<label>,<value>, true]);” target=”_blank”></a>
+
+The parameters enclosed within **<>** defines the event. These parameters are explained below:
+
+* **category**: This parameter defines the type of the event with a prefix **U_**. For example, U_Recommendation or U_Autocomplete.
+
+* **action**: This parameter specifies the user action (clicks) and the event. For example, Pop_Click, MLT_click, etc.
+
+* **label**: This parameter specifies the **PID** or **Query** and its **Rank**. 
+
+* **value**: You can set any value to this parameter. Usually, it is set to 1. 
+
+
+For Autocomplete
+*****************
+
+You can track Unbxd autocomplete feature using Google Analytics by configuring each user interaction.
+
+The event tracking parameters for Autocomplete are given below:
+
+* **Category**: U_Autocomplete
+* **Action**: Pop_Click / TQ_Click / Scope_Click
+* **Label**: Query-Rank
+* **Value**: 1
+
+Here,
+
+* **Pop_Click**: click on Popular Products
+* **TQ_Click**: click on Top Queries or Keyword Suggestions
+* **Scope_Click**: click on In-fields (filter)
+* **Query-Rank**: is the query and its rank within the individual Autocomplete Doctype (Popular Products, Top Queries and In-feature)
+
+**Note**: The **Query-Rank** for In-fields will be the *Query&filter = <Filtername>:<FilterValue>*
+
+For Recommendations
+********************
+
+You can also track Unbxd recommendation widgets using Google Analytics by configuring the user interaction with the widget.
+
+The event tracking parameters for Unbxd Recommendation widgets are given below:
+
+
+Recently Viewed  
+^^^^^^^^^^^^^^^^
+
+The ubiquitous nature of this widget allows you to display it anywhere on your store.
+
+* **Category**: U_Recommendations
+* **Action**: RV_Click
+* **Label**: PID | Rank
+* **Value**: 1
+
+**Note**: *Rank* specifies the position of the product is shown in the widget
+
+Recommended For You
+^^^^^^^^^^^^^^^^^^^^^
+
+Similar to the Recently Viewed widget, this widget also can be placed anywhere on your ecommerce store.
+
+* **Category**: U_Recommendations
+* **Action**: RFU_Click
+* **Label**: PID | Rank
+* **Value**: 1
+
+More Like These
+^^^^^^^^^^^^^^^^
+
+As the name implies, this widget should only be placed on a Product Display Page (PDP).
+
+* **Category**: U_Recommendations
+* **Action**: MLT_Click
+* **Label**: MPID | RPID | Rank
+* **Value**: 1
+
+Here,
+
+* **MPID**: Main product's PID
+* **RPID**: Recommended PID
+
+
+Viewed Also Viewed
+^^^^^^^^^^^^^^^^^^^^
+
+Similar to the More Like These widget, PDP is the appropriate property for this widget. 
+
+* **Category**: U_Recommendations
+* **Action**: VAV_Click
+* **Label**: MPID | RPID | Rank
+* **Value**: 1
+
+
+Bought also Bought
+^^^^^^^^^^^^^^^^^^^^
+
+Similar to the Viewed Also Viewed widget, PDP is the appropriate property for this widget.
+
+* **Category**: U_Recommendations
+* **Action**: BAB_Click
+* **Label**: MPID | RPID | Rank
+* **Value**: 1
+
+**Note**: In some cases the Bought also Bought widget is also configured on non-product detail pages. In such a case MPID can be left blank.
+
+
+Cart Recommendations
+^^^^^^^^^^^^^^^^^^^^
+
+As the name implies, this widget should only be placed on the Cart Page.
+
+* **Category**: U_Recommendations
+* **Action**: Cart_Click
+* **Label**: PID | Rank
+* **Value**: 1
+
+
+Top Sellers
+^^^^^^^^^^^^^
+Similar to the Recently Viewed and Recommended For You widget, this widget also can be placed anywhere on your store.
+
+* **Category**: U_Recommendations
+* **Action**: HTS_Click / CTS_Click /  BTS_Click / PDPTS_Click
+* **Label**: PID | Rank
+* **Value**: 1
+
+Here,
+
+* **HTS**: Home page Top Sellers
+* **CTS**: Category Top Sellers
+* **BTS**: Brand Top Sellers
+* **PDPTS**: Product Display Page(PDP) Top Sellers
