@@ -25,8 +25,8 @@ public class Client {
         if let logsFolderPath = logsConfig.logFolderPath {
             let fileLogManager = DDLogFileManagerDefault.init(logsDirectory: logsFolderPath, defaultFileProtectionLevel: .none)
             let fileLogger = DDFileLogger.init(logFileManager: fileLogManager)
-            fileLogger!.rollingFrequency = TimeInterval(60*60*24)
-            DDLog.add(fileLogger!, with: logsConfig.logLevel)
+            fileLogger.rollingFrequency = TimeInterval(60*60*24)
+            DDLog.add(fileLogger, with: logsConfig.logLevel)
         }
         
         DDLogInfo("Client intialized")
