@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "Unbxd"
-  s.version      = "1.4.4"
+  s.version      = "1.4.5"
   s.summary      = "iOS framework which provides APIs to query Unbxd platform."
   
   s.homepage     = "http://unbxd.com"
