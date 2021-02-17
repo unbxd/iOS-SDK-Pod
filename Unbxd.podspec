@@ -2,13 +2,13 @@
 Pod::Spec.new do |s|
 
   s.name         = "Unbxd"
-  s.version      = "1.5.7"
+  s.version      = "1.5.8"
   s.summary      = "iOS framework which provides APIs to query Unbxd platform."
   
   s.homepage     = "http://unbxd.com"
 
   s.license           = { :type => 'Unbxd', :text => <<-LICENSE
-                                © 2020 Unbxd Inc, All Rights Reserved.
+                                © 2021 Unbxd Inc, All Rights Reserved.
                                 LICENSE
                             }
 
@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/unbxd/iOS-SDK-Pod.git", :tag => "#{s.version}" }
 
-  s.vendored_frameworks = 'Framework/Unbxd.xcframework'
+  s.vendored_frameworks = 'Framework/Unbxd.framework'
 
   s.swift_version = "5.3"
 
