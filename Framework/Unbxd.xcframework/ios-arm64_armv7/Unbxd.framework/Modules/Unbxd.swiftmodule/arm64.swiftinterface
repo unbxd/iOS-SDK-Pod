@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 5.3.1 (swiftlang-1200.0.41 clang-1200.0.32.8)
-// swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name Unbxd
+// swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Unbxd
 import Foundation
 import Swift
 import SystemConfiguration
@@ -80,12 +80,7 @@ import UIKit
   @objc deinit
 }
 public enum UbError : Swift.Int, Swift.Error {
-  case NetworkUnReachable
-  case RequestTimeOut
-  case FailedComposingUrl
-  case EmptyResponse
-  case FailedEncodingUrl
-  case FailedParsingResponse
+  case NetworkUnReachable, RequestTimeOut, FailedComposingUrl, EmptyResponse, FailedEncodingUrl, FailedParsingResponse
   public var errorMessage: Swift.String {
     get
   }
@@ -154,23 +149,18 @@ extension Client {
   public func userId() -> Unbxd.UserId
 }
 public enum ResponseFormat : Swift.String {
-  case JSON
-  case XML
+  case JSON, XML
   public typealias RawValue = Swift.String
-  public init?(rawValue: Swift.String)
   public var rawValue: Swift.String {
     get
   }
+  public init?(rawValue: Swift.String)
 }
 public enum Facet {
-  case Selected(Unbxd.FilterAbstract)
-  case MultiSelect
-  case MultiLevel
+  case Selected(Unbxd.FilterAbstract), MultiSelect, MultiLevel
 }
 public enum ReferenceType {
-  case None
-  case TypeId
-  case TypeName
+  case None, TypeId, TypeName
   public static func == (a: Unbxd.ReferenceType, b: Unbxd.ReferenceType) -> Swift.Bool
   public var hashValue: Swift.Int {
     get
@@ -178,9 +168,7 @@ public enum ReferenceType {
   public func hash(into hasher: inout Swift.Hasher)
 }
 public enum FilterOperatorType {
-  case None
-  case AND
-  case OR
+  case None, AND, OR
   public static func == (a: Unbxd.FilterOperatorType, b: Unbxd.FilterOperatorType) -> Swift.Bool
   public var hashValue: Swift.Int {
     get
@@ -188,19 +176,15 @@ public enum FilterOperatorType {
   public func hash(into hasher: inout Swift.Hasher)
 }
 public enum SortOrder : Swift.String {
-  case None
-  case ASC
-  case DSC
+  case None, ASC, DSC
   public typealias RawValue = Swift.String
-  public init?(rawValue: Swift.String)
   public var rawValue: Swift.String {
     get
   }
+  public init?(rawValue: Swift.String)
 }
 public enum CategoryType {
-  case None
-  case Path
-  case Fields
+  case None, Path, Fields
   public static func == (a: Unbxd.CategoryType, b: Unbxd.CategoryType) -> Swift.Bool
   public var hashValue: Swift.Int {
     get
@@ -208,11 +192,7 @@ public enum CategoryType {
   public func hash(into hasher: inout Swift.Hasher)
 }
 public enum DocType : Swift.String {
-  case INFIELD
-  case POPULARPRODUCTS
-  case TOPSEARCHQUERIES
-  case KEYWORDSUGGESTION
-  case PROMOTED_SUGGESTIONS
+  case INFIELD, POPULARPRODUCTS, TOPSEARCHQUERIES, KEYWORDSUGGESTION, PROMOTED_SUGGESTIONS
   public typealias RawValue = Swift.String
   public init?(rawValue: Swift.String)
   public var rawValue: Swift.String {
@@ -220,39 +200,15 @@ public enum DocType : Swift.String {
   }
 }
 public enum AnalyticsActionType : Swift.String {
-  case None
-  case Visitor
-  case SearchHit
-  case CategoryPageHit
-  case ProductClick
-  case AddToCart
-  case Order
-  case ProductPageView
-  case CartRemoval
-  case RecommendationWidgetImpression
-  case SearchImpression
-  case CategoryPageImpression
-  case Dwelltime
-  case Facets
+  case None, Visitor, SearchHit, CategoryPageHit, ProductClick, AddToCart, Order, ProductPageView, CartRemoval, RecommendationWidgetImpression, SearchImpression, CategoryPageImpression, Dwelltime, Facets
   public typealias RawValue = Swift.String
-  public init?(rawValue: Swift.String)
   public var rawValue: Swift.String {
     get
   }
+  public init?(rawValue: Swift.String)
 }
 public enum RecommendationType : Swift.String {
-  case None
-  case RecommendedForYou
-  case RecentlyViewed
-  case MoreLikeThis
-  case ViewerAlsoViewed
-  case BoughtAlsoBought
-  case CartRecommendation
-  case HomePageTopSeller
-  case CategoryTopSeller
-  case PDPPageTopSeller
-  case BrandTopSeller
-  case CompleteTheLook
+  case None, RecommendedForYou, RecentlyViewed, MoreLikeThis, ViewerAlsoViewed, BoughtAlsoBought, CartRecommendation, HomePageTopSeller, CategoryTopSeller, PDPPageTopSeller, BrandTopSeller, CompleteTheLook
   public func analyticsBoxType() -> Swift.String
   public typealias RawValue = Swift.String
   public init?(rawValue: Swift.String)
@@ -261,16 +217,12 @@ public enum RecommendationType : Swift.String {
   }
 }
 public enum PageType : Swift.String {
-  case Boolean
-  case CategoryPath
-  case TaxonomyNode
-  case Attribute
-  case Url
+  case Boolean, CategoryPath, TaxonomyNode, Attribute, Url
   public typealias RawValue = Swift.String
-  public init?(rawValue: Swift.String)
   public var rawValue: Swift.String {
     get
   }
+  public init?(rawValue: Swift.String)
 }
 public struct AutoSuggestQuery {
   public init(withKey: Swift.String, format: Unbxd.ResponseFormat = .JSON, inField: Unbxd.DocTypeInField? = nil, keywordSuggestions: Unbxd.DocTypeKeywordSuggestions? = nil, topQueries: Unbxd.DocTypeTopQueries? = nil, promotedSuggestions: Unbxd.DocTypePromotedSuggestions? = nil, popularProducts: Unbxd.DocTypePopularProducts? = nil, variant: Unbxd.Variant? = nil, filter: Unbxd.FilterAbstract? = nil)
@@ -299,7 +251,7 @@ public struct AutoSuggestQuery {
   @objc deinit
 }
 extension UIDevice {
-  public static var modelName: Swift.String
+  public static let modelName: Swift.String
 }
 @_hasMissingDesignatedInitializers public class SearchQuery : Unbxd.QueryAbstract {
   public var searchKey: Swift.String?
@@ -415,9 +367,7 @@ public struct FieldSortOrder {
   @objc override dynamic public init()
 }
 public enum LoggingOption {
-  case LogOff
-  case LogDebug
-  case LogError
+  case LogOff, LogDebug, LogError
   public static func == (a: Unbxd.LoggingOption, b: Unbxd.LoggingOption) -> Swift.Bool
   public var hashValue: Swift.Int {
     get
@@ -429,3 +379,32 @@ public class Client {
   public init?(siteKey: Swift.String, apiKey: Swift.String, logsOption: Unbxd.LoggingOption = .LogOff)
   @objc deinit
 }
+extension Unbxd.UbError : Swift.Equatable {}
+extension Unbxd.UbError : Swift.Hashable {}
+extension Unbxd.UbError : Swift.RawRepresentable {}
+extension Unbxd.ResponseFormat : Swift.Equatable {}
+extension Unbxd.ResponseFormat : Swift.Hashable {}
+extension Unbxd.ResponseFormat : Swift.RawRepresentable {}
+extension Unbxd.ReferenceType : Swift.Equatable {}
+extension Unbxd.ReferenceType : Swift.Hashable {}
+extension Unbxd.FilterOperatorType : Swift.Equatable {}
+extension Unbxd.FilterOperatorType : Swift.Hashable {}
+extension Unbxd.SortOrder : Swift.Equatable {}
+extension Unbxd.SortOrder : Swift.Hashable {}
+extension Unbxd.SortOrder : Swift.RawRepresentable {}
+extension Unbxd.CategoryType : Swift.Equatable {}
+extension Unbxd.CategoryType : Swift.Hashable {}
+extension Unbxd.DocType : Swift.Equatable {}
+extension Unbxd.DocType : Swift.Hashable {}
+extension Unbxd.DocType : Swift.RawRepresentable {}
+extension Unbxd.AnalyticsActionType : Swift.Equatable {}
+extension Unbxd.AnalyticsActionType : Swift.Hashable {}
+extension Unbxd.AnalyticsActionType : Swift.RawRepresentable {}
+extension Unbxd.RecommendationType : Swift.Equatable {}
+extension Unbxd.RecommendationType : Swift.Hashable {}
+extension Unbxd.RecommendationType : Swift.RawRepresentable {}
+extension Unbxd.PageType : Swift.Equatable {}
+extension Unbxd.PageType : Swift.Hashable {}
+extension Unbxd.PageType : Swift.RawRepresentable {}
+extension Unbxd.LoggingOption : Swift.Equatable {}
+extension Unbxd.LoggingOption : Swift.Hashable {}
