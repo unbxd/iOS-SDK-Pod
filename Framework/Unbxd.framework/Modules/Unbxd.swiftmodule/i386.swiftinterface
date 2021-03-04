@@ -224,6 +224,30 @@ public enum PageType : Swift.String {
   }
   public init?(rawValue: Swift.String)
 }
+public enum RecsV2PageType : Swift.String {
+  case Home, Category, Brand, Pdp, Cart
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum RecsVersion {
+  case Version1, Version2
+  public static func == (a: Unbxd.RecsVersion, b: Unbxd.RecsVersion) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public enum Widget : Swift.String {
+  case None, Widget1, Widget2, Widget3
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
 public struct AutoSuggestQuery {
   public init(withKey: Swift.String, format: Unbxd.ResponseFormat = .JSON, inField: Unbxd.DocTypeInField? = nil, keywordSuggestions: Unbxd.DocTypeKeywordSuggestions? = nil, topQueries: Unbxd.DocTypeTopQueries? = nil, promotedSuggestions: Unbxd.DocTypePromotedSuggestions? = nil, popularProducts: Unbxd.DocTypePopularProducts? = nil, variant: Unbxd.Variant? = nil, filter: Unbxd.FilterAbstract? = nil)
 }
@@ -315,47 +339,47 @@ public struct FieldSortOrder {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class RecommendedForYourRecomendations : Unbxd.RecommendationQuery {
-  public init(uid: Swift.String, region: Swift.String, currency: Swift.String? = nil, format: Unbxd.ResponseFormat = ResponseFormat.JSON)
+  public init(uid: Swift.String, region: Swift.String? = nil, currency: Swift.String? = nil, ip: Swift.String? = nil, format: Unbxd.ResponseFormat = ResponseFormat.JSON)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class RecentlyViewedRecomendations : Unbxd.RecommendationQuery {
-  public init(uid: Swift.String, productID: Swift.String, region: Swift.String, currency: Swift.String? = nil, format: Unbxd.ResponseFormat = ResponseFormat.JSON)
+  public init(uid: Swift.String, productID: Swift.String, region: Swift.String? = nil, currency: Swift.String? = nil, ip: Swift.String? = nil, format: Unbxd.ResponseFormat = ResponseFormat.JSON)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class MoreLikeThisRecomendations : Unbxd.RecommendationQuery {
-  public init(uid: Swift.String, productID: Swift.String, region: Swift.String, currency: Swift.String? = nil, format: Unbxd.ResponseFormat = ResponseFormat.JSON)
+  public init(uid: Swift.String, productID: Swift.String, region: Swift.String? = nil, currency: Swift.String? = nil, ip: Swift.String? = nil, format: Unbxd.ResponseFormat = ResponseFormat.JSON)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class ViewedAlsoViewedRecomendations : Unbxd.RecommendationQuery {
-  public init(uid: Swift.String, productID: Swift.String, region: Swift.String, currency: Swift.String? = nil, format: Unbxd.ResponseFormat = ResponseFormat.JSON)
+  public init(uid: Swift.String, productID: Swift.String, region: Swift.String? = nil, currency: Swift.String? = nil, ip: Swift.String? = nil, format: Unbxd.ResponseFormat = ResponseFormat.JSON)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class BoughtAlsoBoughtRecomendations : Unbxd.RecommendationQuery {
-  public init(uid: Swift.String, productID: Swift.String, region: Swift.String, currency: Swift.String? = nil, format: Unbxd.ResponseFormat = ResponseFormat.JSON)
+  public init(uid: Swift.String, productID: Swift.String, region: Swift.String? = nil, currency: Swift.String? = nil, ip: Swift.String? = nil, format: Unbxd.ResponseFormat = ResponseFormat.JSON)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class CartRecomendations : Unbxd.RecommendationQuery {
-  public init(uid: Swift.String, region: Swift.String, currency: Swift.String? = nil, format: Unbxd.ResponseFormat = ResponseFormat.JSON)
+  public init(uid: Swift.String, region: Swift.String? = nil, currency: Swift.String? = nil, ip: Swift.String? = nil, widget: Unbxd.Widget = .None, format: Unbxd.ResponseFormat = ResponseFormat.JSON, version: Unbxd.RecsVersion = .Version1)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class HomePageTopSellersRecomendations : Unbxd.RecommendationQuery {
-  public init(uid: Swift.String, region: Swift.String, currency: Swift.String? = nil, format: Unbxd.ResponseFormat = ResponseFormat.JSON)
+  public init(uid: Swift.String, region: Swift.String? = nil, currency: Swift.String? = nil, ip: Swift.String? = nil, widget: Unbxd.Widget = .None, format: Unbxd.ResponseFormat = ResponseFormat.JSON, version: Unbxd.RecsVersion = .Version1)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class CategoryTopSellersRecomendations : Unbxd.RecommendationQuery {
-  public init(uid: Swift.String, region: Swift.String, categoryName: Swift.String, currency: Swift.String? = nil, format: Unbxd.ResponseFormat = ResponseFormat.JSON)
+  public init(uid: Swift.String, categoryName: Swift.String? = nil, categoryLevelNames: [Swift.String]? = nil, region: Swift.String? = nil, currency: Swift.String? = nil, ip: Swift.String? = nil, widget: Unbxd.Widget = .None, format: Unbxd.ResponseFormat = ResponseFormat.JSON, version: Unbxd.RecsVersion = .Version1)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class PDPTopSellersRecomendations : Unbxd.RecommendationQuery {
-  public init(uid: Swift.String, productID: Swift.String, region: Swift.String, currency: Swift.String? = nil, format: Unbxd.ResponseFormat = ResponseFormat.JSON)
+  public init(uid: Swift.String, productID: Swift.String, region: Swift.String? = nil, currency: Swift.String? = nil, ip: Swift.String? = nil, widget: Unbxd.Widget = .None, format: Unbxd.ResponseFormat = ResponseFormat.JSON, version: Unbxd.RecsVersion = .Version1)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class BrandTopSellersRecomendations : Unbxd.RecommendationQuery {
-  public init(uid: Swift.String, region: Swift.String, brandName: Swift.String, currency: Swift.String? = nil, format: Unbxd.ResponseFormat = ResponseFormat.JSON)
+  public init(uid: Swift.String, brandName: Swift.String, region: Swift.String? = nil, currency: Swift.String? = nil, ip: Swift.String? = nil, widget: Unbxd.Widget = .None, format: Unbxd.ResponseFormat = ResponseFormat.JSON, version: Unbxd.RecsVersion = .Version1)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class CompleteTheLookRecomendations : Unbxd.RecommendationQuery {
-  public init(uid: Swift.String, productID: Swift.String, region: Swift.String, currency: Swift.String? = nil, format: Unbxd.ResponseFormat = ResponseFormat.JSON)
+  public init(uid: Swift.String, productID: Swift.String, region: Swift.String? = nil, currency: Swift.String? = nil, ip: Swift.String? = nil, format: Unbxd.ResponseFormat = ResponseFormat.JSON)
   @objc deinit
 }
 @objc @_hasMissingDesignatedInitializers public class UserId : ObjectiveC.NSObject, Foundation.NSCoding {
@@ -406,5 +430,13 @@ extension Unbxd.RecommendationType : Swift.RawRepresentable {}
 extension Unbxd.PageType : Swift.Equatable {}
 extension Unbxd.PageType : Swift.Hashable {}
 extension Unbxd.PageType : Swift.RawRepresentable {}
+extension Unbxd.RecsV2PageType : Swift.Equatable {}
+extension Unbxd.RecsV2PageType : Swift.Hashable {}
+extension Unbxd.RecsV2PageType : Swift.RawRepresentable {}
+extension Unbxd.RecsVersion : Swift.Equatable {}
+extension Unbxd.RecsVersion : Swift.Hashable {}
+extension Unbxd.Widget : Swift.Equatable {}
+extension Unbxd.Widget : Swift.Hashable {}
+extension Unbxd.Widget : Swift.RawRepresentable {}
 extension Unbxd.LoggingOption : Swift.Equatable {}
 extension Unbxd.LoggingOption : Swift.Hashable {}
