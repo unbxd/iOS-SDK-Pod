@@ -2,9 +2,9 @@
 Pod::Spec.new do |s|
 
   s.name         = "Unbxd"
-  s.version      = "1.6.2"
+  s.version      = "1.6.3"
   s.summary      = "iOS framework which provides APIs to query Unbxd platform."
-  
+
   s.homepage     = "http://unbxd.com"
 
   s.license           = { :type => 'Unbxd', :text => <<-LICENSE
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
                                 LICENSE
                             }
 
-  s.author    = "tilak kumar"
+  s.author    = "kiran.peddikuppa@unbxd.com"
 
   s.platform     = :ios
 

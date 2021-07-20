@@ -391,7 +391,7 @@ public struct FieldSortOrder {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class RecommendationsV2 : Unbxd.RecommendationQuery {
-  public init(pageType: Unbxd.RecsV2PageType, uid: Swift.String, ip: Swift.String? = nil, widget: Unbxd.Widget = .None, id: Swift.String? = nil, brand: Swift.String? = nil, categoryLevelNames: [Swift.String]? = nil)
+  public init(pageType: Unbxd.RecsV2PageType, uid: Swift.String, ip: Swift.String? = nil, widget: Unbxd.Widget = .None, id: Swift.String? = nil, brand: Swift.String? = nil, pids: [Swift.String]? = nil, categoryLevelNames: [Swift.String]? = nil)
   @objc deinit
 }
 @objc @_hasMissingDesignatedInitializers public class UserId : ObjectiveC.NSObject, Foundation.NSCoding {
