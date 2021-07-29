@@ -2,10 +2,10 @@
 Pod::Spec.new do |s|
 
   s.name         = "Unbxd"
-  s.version      = "1.6.5"
+  s.version      = "1.6.6"
   s.summary      = "iOS framework which provides APIs to query Unbxd platform."
 
-  s.homepage     = "http://unbxd.com"
+  s.homepage     = "https://unbxd.com"
 
   s.license           = { :type => 'Unbxd', :text => <<-LICENSE
                                 © 2021 Unbxd Inc, All Rights Reserved.
