@@ -21,6 +21,8 @@ import UIKit
   public var filter: Unbxd.FilterAbstract?
   public var categoryFilter: Unbxd.CategoryFilterAbstract?
   public var multipleFilter: Unbxd.MultipleFilterAbstract?
+  public var multipleFilterAND: Unbxd.MultipleFilterAbstractAND?
+  public var multipleFilterOR: Unbxd.MultipleFilterAbstractOR?
   public var fieldsSortOrder: Swift.Array<Unbxd.FieldSortOrder>?
   @objc deinit
 }
@@ -104,7 +106,7 @@ public enum UbError : Swift.Int, Swift.Error {
 @_hasMissingDesignatedInitializers public class BrowseQuery : Unbxd.QueryAbstract {
   public var browseCategoryQuery: Unbxd.CategoryAbstract?
   public var pageType: Unbxd.PageType?
-  public init(categoryQuery: Unbxd.CategoryAbstract, pageType: Unbxd.PageType? = nil, rows: Swift.Int? = nil, start: Swift.Int? = nil, format: Unbxd.ResponseFormat = .JSON, spellCheck: Swift.Bool = false, analytics: Swift.Bool = false, statsField: Swift.String? = nil, variant: Unbxd.Variant? = nil, fields: Swift.Array<Swift.String>? = nil, facet: Unbxd.Facet? = nil, filter: Unbxd.FilterAbstract? = nil, categoryFilter: Unbxd.CategoryFilterAbstract? = nil, multipleFilter: Unbxd.MultipleFilterAbstract? = nil, fieldsSortOrder: Swift.Array<Unbxd.FieldSortOrder>? = nil, personalization: Swift.Bool? = nil)
+  public init(categoryQuery: Unbxd.CategoryAbstract, pageType: Unbxd.PageType? = nil, rows: Swift.Int? = nil, start: Swift.Int? = nil, format: Unbxd.ResponseFormat = .JSON, spellCheck: Swift.Bool = false, analytics: Swift.Bool = false, statsField: Swift.String? = nil, variant: Unbxd.Variant? = nil, fields: Swift.Array<Swift.String>? = nil, facet: Unbxd.Facet? = nil, filter: Unbxd.FilterAbstract? = nil, categoryFilter: Unbxd.CategoryFilterAbstract? = nil, multipleFilter: Unbxd.MultipleFilterAbstract? = nil, multipleFilterOR: Unbxd.MultipleFilterAbstractOR? = nil, multipleFilterAND: Unbxd.MultipleFilterAbstractAND? = nil, fieldsSortOrder: Swift.Array<Unbxd.FieldSortOrder>? = nil, personalization: Swift.Bool? = nil)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class CategoryAbstract {
@@ -287,7 +289,7 @@ extension UIDevice {
 }
 @_hasMissingDesignatedInitializers public class SearchQuery : Unbxd.QueryAbstract {
   public var searchKey: Swift.String?
-  public init(key: Swift.String, rows: Swift.Int? = nil, start: Swift.Int? = nil, format: Unbxd.ResponseFormat = .JSON, spellCheck: Swift.Bool = false, analytics: Swift.Bool = false, statsField: Swift.String? = nil, variant: Unbxd.Variant? = nil, fields: Swift.Array<Swift.String>? = nil, facet: Unbxd.Facet? = nil, filter: Unbxd.FilterAbstract? = nil, categoryFilter: Unbxd.CategoryFilterAbstract? = nil, multipleFilter: Unbxd.MultipleFilterAbstract? = nil, fieldsSortOrder: Swift.Array<Unbxd.FieldSortOrder>? = nil, personalization: Swift.Bool? = nil)
+  public init(key: Swift.String, rows: Swift.Int? = nil, start: Swift.Int? = nil, format: Unbxd.ResponseFormat = .JSON, spellCheck: Swift.Bool = false, analytics: Swift.Bool = false, statsField: Swift.String? = nil, variant: Unbxd.Variant? = nil, fields: Swift.Array<Swift.String>? = nil, facet: Unbxd.Facet? = nil, filter: Unbxd.FilterAbstract? = nil, categoryFilter: Unbxd.CategoryFilterAbstract? = nil, multipleFilter: Unbxd.MultipleFilterAbstract? = nil, multipleFilterOR: Unbxd.MultipleFilterAbstractOR? = nil, multipleFilterAND: Unbxd.MultipleFilterAbstractAND? = nil, fieldsSortOrder: Swift.Array<Unbxd.FieldSortOrder>? = nil, personalization: Swift.Bool? = nil)
   @objc deinit
 }
 public struct Variant {
@@ -338,6 +340,28 @@ public struct Variant {
 }
 @_inheritsConvenienceInitializers public class MultipleNameFilter : Unbxd.MultipleFilterAbstract {
   public init(filters: Swift.Array<Unbxd.FilterAbstract>, operatorType: Unbxd.FilterOperatorType)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class MultipleFilterAbstractAND {
+  @objc deinit
+}
+@_inheritsConvenienceInitializers public class MultipleIdFilterAND : Unbxd.MultipleFilterAbstractAND {
+  public init(filters: Swift.Array<Unbxd.FilterAbstract>, operatorType: Unbxd.FilterOperatorType)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers public class MultipleNameFilterAND : Unbxd.MultipleFilterAbstractAND {
+  public init(filters: Swift.Array<Unbxd.FilterAbstract>, operatorType: Unbxd.FilterOperatorType)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class MultipleFilterAbstractOR {
+  @objc deinit
+}
+@_inheritsConvenienceInitializers public class MultipleIdFilterOR : Unbxd.MultipleFilterAbstractOR {
+  public init(filters: Swift.Array<Unbxd.MultipleFilterAbstract>)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers public class MultipleNameFilterOR : Unbxd.MultipleFilterAbstractOR {
+  public init(filters: Swift.Array<Unbxd.MultipleFilterAbstract>)
   @objc deinit
 }
 public struct FieldSortOrder {
